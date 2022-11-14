@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-const tokenMiddleware = async (
+const tokenAuthMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -28,4 +28,4 @@ const tokenMiddleware = async (
   });
 };
 
-export default tokenMiddleware;
+export default tokenAuthMiddleware;
