@@ -19,6 +19,6 @@ userRoutes.patch(
   userUpdatePasswordUtils,
   userUpdateController
 );
-userRoutes.delete("/:id", tokenAuthMiddleware, userDeleteController);
+userRoutes.delete("/:id", tokenAuthMiddleware, isAdmUser, userDeleteController);
 
 export default userRoutes;

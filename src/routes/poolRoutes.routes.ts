@@ -4,13 +4,14 @@ import poolDeleteController from "../controllers/pools/poolDelete.controller";
 import poolListController from "../controllers/pools/poolList.controller";
 import poolListDataController from "../controllers/pools/poolListData.controller";
 import poolUpdateController from "../controllers/pools/poolUpdate.controller";
+import tokenAuthMiddleware from "../middlewares/tokenAuth.middleware";
 
 const poolRoutes = Router();
 
-poolRoutes.post("/", poolCreateController);
+poolRoutes.post("/", tokenAuthMiddleware, poolCreateController);
 poolRoutes.get("/", poolListController);
-poolRoutes.get("/:id", poolListDataController);
-poolRoutes.patch("/:id", poolUpdateController);
-poolRoutes.delete("/:id", poolDeleteController);
+poolRoutes.get("/:id", tokenAuthMiddleware, poolListDataController);
+poolRoutes.patch("/:id", tokenAuthMiddleware, poolUpdateController);
+poolRoutes.delete("/:id", tokenAuthMiddleware, poolDeleteController);
 
 export default poolRoutes;
